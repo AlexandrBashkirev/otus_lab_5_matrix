@@ -1,0 +1,15 @@
+x64/
+.vs/
+version.h
+test_version/
+Release/
+version/
+Debug/
+otus_lab_2/
+version_lib/
+otus_lab_2.sln
+otus_lab_3_allocator/
+otus_lab_3_allocator.sln
+otus_lab_3_allocator_tests/
+cbp/
+print_ip/
