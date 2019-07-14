@@ -70,14 +70,14 @@ namespace flaber
 		using ContanerType = std::map<KeyType, T>;
 		using ContanerIteratorType = typename ContanerType::iterator;
 
-		template<int pos, typename T, typename IndexesType>
+		template<int pos, typename IndexesType>
 		struct MatrixElemDummy
 		{
 			MatrixElemDummy(Matrix& _matrix, IndexesType _indexes) :
 				matrix(_matrix), indexes(_indexes) { }
 
 			auto operator[](int index) {
-				return MatrixElemDummy<pos-1, T,  decltype(std::tuple_cat(indexes, std::make_tuple(index)))>
+				return MatrixElemDummy<pos-1, decltype(std::tuple_cat(indexes, std::make_tuple(index)))>
 					(matrix, std::tuple_cat(indexes, std::make_tuple(index)));
 			}
 		private:
@@ -85,8 +85,8 @@ namespace flaber
 			Matrix& matrix;
 		};
 
-		template< typename T, typename IndexesType>
-		struct MatrixElemDummy<1, T, IndexesType>
+		template< typename IndexesType>
+		struct MatrixElemDummy<1, IndexesType>
 		{
 			MatrixElemDummy(Matrix& _matrix, IndexesType _indexes) :
 				matrix(_matrix), indexes(_indexes) { }
@@ -151,7 +151,7 @@ namespace flaber
 		}
 		
 		auto operator[](int index) {
-			return MatrixElemDummy<Dim, T, decltype(std::make_tuple(index))>(*this, std::make_tuple(index));
+			return MatrixElemDummy<Dim, decltype(std::make_tuple(index))>(*this, std::make_tuple(index));
 		}
 
 	private:
