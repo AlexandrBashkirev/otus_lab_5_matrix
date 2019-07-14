@@ -5,8 +5,6 @@
 #include <cassert>
 #include "matrix.h"
 
-#include <map>
-
 int main()
 {
 	flaber::Matrix<int, 0> matrix;

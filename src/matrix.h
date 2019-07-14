@@ -74,7 +74,7 @@ namespace flaber
 		struct MatrixElemDummy
 		{
 			MatrixElemDummy(Matrix& _matrix, IndexesType _indexes) :
-				matrix(_matrix), indexes(_indexes) { }
+				indexes(_indexes), matrix(_matrix) { }
 
 			auto operator[](int index) {
 				return MatrixElemDummy<pos-1, decltype(std::tuple_cat(indexes, std::make_tuple(index)))>
@@ -89,7 +89,7 @@ namespace flaber
 		struct MatrixElemDummy<1, IndexesType>
 		{
 			MatrixElemDummy(Matrix& _matrix, IndexesType _indexes) :
-				matrix(_matrix), indexes(_indexes) { }
+				indexes(_indexes), matrix(_matrix) { }
 
 			operator T() const {
 				auto it = matrix.cells.find(indexes);

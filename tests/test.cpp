@@ -6,7 +6,7 @@ BOOST_AUTO_TEST_SUITE(matrix_test_suite)
 
 BOOST_AUTO_TEST_CASE(test)
 {
-	Matrix<int, -1> matrix;
+	flaber::Matrix<int, -1> matrix;
 	BOOST_CHECK_EQUAL(matrix.size(), 0);
 
 	auto a = matrix[0][0];
