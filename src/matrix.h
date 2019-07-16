@@ -141,11 +141,11 @@ namespace flaber
 			return cells.size();
 		}
 
-		MatrixIterator<T, ContanerIteratorType> begin()
+		auto begin()
 		{
 			return MatrixIterator<T, ContanerIteratorType>(cells.begin());
 		}
-		MatrixIterator<T, ContanerIteratorType> end()
+		auto end()
 		{
 			return MatrixIterator<T, ContanerIteratorType>(cells.end());
 		}
