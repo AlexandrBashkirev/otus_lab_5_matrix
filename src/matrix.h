@@ -99,7 +99,7 @@ namespace flaber
 			}
 
 			MatrixElemDummy& operator= (T v) & {
-				matrix.cells[indexes] = v;
+				applyValue(v);
 				return *this;
 			}
 
@@ -108,14 +108,7 @@ namespace flaber
 			}
 
 			MatrixElemDummy&& operator= (T v) && {
-				if (v == DefVal) {
-					auto it = matrix.cells.find(indexes);
-					if (it != matrix.cells.end())
-						matrix.cells.erase(indexes);
-				} else {
-					matrix.cells.insert_or_assign(indexes, v);
-				}
-
+				applyValue(v);
 				return std::move(*this);
 			}
 
@@ -130,6 +123,18 @@ namespace flaber
 		private:
 			IndexesType indexes;
 			Matrix& matrix;
+
+			void applyValue(T v)
+			{
+				if (v == DefVal) {
+					auto it = matrix.cells.find(indexes);
+					if (it != matrix.cells.end())
+						matrix.cells.erase(indexes);
+				}
+				else {
+					matrix.cells.insert_or_assign(indexes, v);
+				}
+			}
 		};
 
 	public:

@@ -10,10 +10,12 @@ int main()
 	flaber::Matrix<int, 0> matrix;
 
 	for (int i = 0; i < 10; ++i)
-		matrix[i][i] = i;
+		matrix[i][i] = i; // rvalue qualified assigned operator
 
-	for (int i = 0; i < 10; ++i)
-		matrix[i][9-i] = 9-i;
+	for (int i = 0; i < 10; ++i) {
+		auto matrElem = matrix[i][9 - i];
+		matrElem = 9 - i; // lvalue qualified assigned operator
+	}
 
 	for (int i = 1; i < 9; ++i)
 	{
